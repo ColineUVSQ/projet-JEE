@@ -5,7 +5,7 @@ public class Client extends Utilisateur implements IUtilisateur {
 	
 	public Client() {
 		super();
-		// TODO Auto-generated constructor stub
+		commandes = null;
 	}
 
 	public Commande getCommandes() {
@@ -18,7 +18,11 @@ public class Client extends Utilisateur implements IUtilisateur {
 
 	@Override
 	public String toString() {
-		return super.toString() + " " + commandes.affiche();
+		if(commandes == null) { 
+			return super.toString();
+		} else {
+			return super.toString() + "\nses commandes : " + commandes.affiche();
+		}
 	}
 	
 }

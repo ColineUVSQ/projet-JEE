@@ -23,7 +23,8 @@ public class Commande {
 		String chaine = "";
 		int i = 1;
 		for (IPanier p : paniers) {
-			chaine += "panier numero " + i + p.affiche();
+			chaine += "panier numero " + i + "\n" + p.affiche();
+			chaine += "\n";
 			i++;
 		}
 		return chaine;

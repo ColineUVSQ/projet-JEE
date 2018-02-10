@@ -2,7 +2,7 @@ package com.uvsq.colinebintou.projet.modele;
 
 import java.util.ArrayList;
 
-public class Panier {
+public class Panier implements IPanier {
 	private ArrayList<IArticle>  articles;
 	private boolean paye;
 	
@@ -42,6 +42,7 @@ public class Panier {
 		int i = 1;
 		for (IArticle a : articles) {
 			chaine += "article numero "+ i + ": " + a.toString();
+			chaine += "\n";
 			i++;
 		}
 		return chaine;
