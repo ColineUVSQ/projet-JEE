@@ -1,6 +1,14 @@
 package com.uvsq.colinebintou.projet.service;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.uvsq.colinebintou.projet.dao.AdministrateurDAO;
+import com.uvsq.colinebintou.projet.dao.ClientDAO;
+import com.uvsq.colinebintou.projet.dao.LivreDAO;
+import com.uvsq.colinebintou.projet.dao.PanierDAO;
 import com.uvsq.colinebintou.projet.modele.*;
+
 
 public class App {
 	
@@ -48,15 +56,17 @@ public class App {
 		p.setPaye(false);
 		p.ajouter(cd);
 		p.ajouter(d);
+		p.supprimer(cd);
+		p.supprimer(d);
 		
-		System.out.println(p.affiche());
+		//System.out.println(p.affiche());
 		
 		Commande com = new Commande();
 		com.ajouter(p);
-		System.out.println(com.affiche());
+		//System.out.println(com.affiche());
 		
 		c.setCommandes(com);
-		System.out.println(c.toString());
+		//System.out.println(c.toString());
 		
 		Administrateur a = new Administrateur();
 		a.setId(5);
@@ -65,5 +75,19 @@ public class App {
 		a.setNom("elocdjneo");
 		System.out.println(a.toString());
 		
+		ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml"); //-> chargement du contexte
+		AdministrateurDAO admin = (AdministrateurDAO) context.getBean("daoAdmin");
+		admin.create(a);
+		System.out.println(admin.find(a));
+		
+		a.setNom("ramous");
+		admin.update(a);
+		//admin.delete(a);
+		
+		LivreDAO livre = (LivreDAO) context.getBean("daoLivre");
+		PanierDAO panier = (PanierDAO) context.getBean("daoPanier");
+		
+		livre.create(l);
+		panier.create(p);	
 	}
 }
