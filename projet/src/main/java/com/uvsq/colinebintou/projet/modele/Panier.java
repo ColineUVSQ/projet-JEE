@@ -1,17 +1,15 @@
 package com.uvsq.colinebintou.projet.modele;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 public class Panier implements IPanier {
 	private int id;
-	private Set<Article>  articles;
+	private Set<IArticle>  articles;
 	private boolean paye;
 	
 	public Panier() {
-		articles = new HashSet<Article>();
+		articles = new HashSet<IArticle>();
 		paye = false;
 	}
 		
@@ -22,12 +20,12 @@ public class Panier implements IPanier {
 	public void setId(int id) {
 		this.id = id;
 	}
-	
-	public Set<Article> getArticles() {
+
+	public Set<IArticle> getArticles() {
 		return articles;
 	}
 
-	public void setArticles(Set<Article> articles) {
+	public void setArticles(Set<IArticle> articles) {
 		this.articles = articles;
 	}
 
@@ -51,7 +49,7 @@ public class Panier implements IPanier {
 	
 	public double calculPrix() {
 		double prixTotal = 0.0;
-		for (Article a : articles) {
+		for (IArticle a : articles) {
 			prixTotal += a.calculPrix();
 		}
 		return prixTotal;
@@ -60,7 +58,7 @@ public class Panier implements IPanier {
 	public String affiche() {
 		String chaine = "";
 		int i = 1;
-		for (Article a : articles) {
+		for (IArticle a : articles) {
 			chaine += "article numero "+ i + ": " + a.toString();
 			chaine += "\n";
 			i++;

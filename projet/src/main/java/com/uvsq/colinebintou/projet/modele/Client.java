@@ -1,28 +1,44 @@
 package com.uvsq.colinebintou.projet.modele;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class Client extends Utilisateur implements IUtilisateur {
-	private Commande commandes;
+	private Set<IPanier> paniers;
 	
 	public Client() {
 		super();
-		commandes = null;
+		paniers = new HashSet<IPanier>();
 	}
 
-	public Commande getCommandes() {
-		return commandes;
+	public Set<IPanier> getPaniers() {
+		return paniers;
 	}
 
-	public void setCommandes(Commande commandes) {
-		this.commandes = commandes;
-	}
 
-	@Override
-	public String toString() {
-		if(commandes == null) { 
-			return super.toString();
-		} else {
-			return super.toString() + "\nses commandes : " + commandes.affiche();
-		}
+	public void setPaniers(Set<IPanier> paniers) {
+		this.paniers = paniers;
 	}
 	
+	public boolean ajouter(IPanier p) {
+		if(paniers.add(p)) return true;
+		else return false;
+	}
+	
+	public boolean supprimer(IPanier p) {
+		if(paniers.remove(p)) return true;
+		else return false;
+	}
+	
+	@Override
+	public String toString() {
+		String chaine = super.toString() + "\nses commandes :";
+		int i = 1;
+		for (IPanier p : paniers) {
+			chaine += "panier numero " + i + "\n" + p.affiche();
+			chaine += "\n";
+			i++;
+		}
+		return chaine;
+	}
 }

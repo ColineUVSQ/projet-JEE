@@ -3,13 +3,13 @@
 	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-<class table="Livre" name="com.uvsq.colinebintou.projet.modele.Livre" mutable="false">
+<class table="CD" name="com.uvsq.colinebintou.projet.modele.CD" mutable="false">
        <id name="id" type="int"> 
 <column name="ID"/> <generator class="increment"/> 
        </id> 
       <property name="nom" type="java.lang.String"> <column name="NOM"/> </property>
       <property name="prix" type="double"> <column name="PRIX"/> </property> 
 	  <property name="quantite" type="int"> <column name="QUANTITE"/> </property> 
-	  <property name="auteur" type="java.lang.String"> <column name="AUTEUR"/> </property> 
+	  <property name="artiste" type="java.lang.String"> <column name="ARTISTE"/> </property> 
 </class>
 </hibernate-mapping>

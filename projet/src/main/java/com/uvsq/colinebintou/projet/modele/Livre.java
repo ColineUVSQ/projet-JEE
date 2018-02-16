@@ -27,4 +27,12 @@ public class Livre extends Article implements IArticle {
 		return super.getPrix();
 	}
 
+	public void setId(int id) {
+		super.setId(id);
+	}
+	
+	public int getId() {
+		return super.getId();
+	}
+
 }

@@ -16,6 +16,14 @@ public class DVD extends Article implements IArticle {
 		this.realisateur = realisateur;
 	}
 
+	public int getId() {
+		return super.getId();
+	}
+	
+	public void setId(int id) {
+		super.setId(id);
+	}
+	
 	@Override
 	public String toString() {
 		return super.toString() + " " + getRealisateur();

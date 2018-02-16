@@ -3,20 +3,12 @@
 	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-<class table="Client" name="com.uvsq.colinebintou.projet.modele.Client">
+<class table="Utilisateur" name="com.uvsq.colinebintou.projet.modele.Utilisateur" mutable="false">
        <id name="id" type="int"> 
 <column name="ID"/> <generator class="increment"/> 
        </id> 
        <property name="login" type="java.lang.String"> <column name="LOGIN"/> </property>
       <property name="password" type="java.lang.String"> <column name="PASSWORD"/> </property> 
-	  <property name="nom" type="java.lang.String"> <column name="NAME"/> </property>
- 	  <set name="paniers" table="commande" cascade="all" lazy="false">
- 	   <key>  
-			<column name="ID_CLIENT" not-null="true"/>
-	   </key>
-	   <many-to-many class="com.uvsq.colinebintou.projet.modele.IPanier">
-			<column name="ID_PANIER"></column>
-		</many-to-many>
-		</set> 
+	  <property name="nom" type="java.lang.String"> <column name="NAME"/> </property> 
 </class>
 </hibernate-mapping>

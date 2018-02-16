@@ -17,7 +17,7 @@ http://www.springframework.org/schema/context/spring-context-3.0.xsd" >
 		<value>com.mysql.jdbc.Driver</value>
 		 </property> 
 		<property name="url"> 
-			<value>jdbc:mysql://localhost/site</value>
+			<value>jdbc:mysql://localhost/colineetbintou</value>
 		 </property>
 		<property name="username"> <value>root</value> </property> 
 		<property name="password"> <value></value> </property>		
@@ -29,7 +29,8 @@ http://www.springframework.org/schema/context/spring-context-3.0.xsd" >
 			<list>
 				 <value>com/uvsq/colinebintou/projet/modele/Client.hbm.xml</value> 
 				 <value>com/uvsq/colinebintou/projet/modele/Administrateur.hbm.xml</value>
-				 <value>com/uvsq/colinebintou/projet/modele/Panier.hbm.xml</value>
+				 <value>com/uvsq/colinebintou/projet/modele/Utilisateur.hbm.xml</value>
+				 <value>com/uvsq/colinebintou/projet/modele/IPanier.hbm.xml</value>
 				 <value>com/uvsq/colinebintou/projet/modele/IArticle.hbm.xml</value>
 			</list> 
 		</property> 
@@ -43,11 +44,17 @@ http://www.springframework.org/schema/context/spring-context-3.0.xsd" >
 	</bean>
 	
 	
-   <bean id="daoClient"	class="com.uvsq.colinebintou.projet.dao.ClientDAO">
+   <bean id="daoClient"	class="com.uvsq.colinebintou.projet.dao.ClientDAOImpl">
    	<property name="sessionFactory">
    		<ref bean="mySessionFactory"></ref>
    	</property>
    </bean>
+   
+    <bean id="serviceLoginClient"  class="com.uvsq.colinebintou.projet.service.ServiceLoginClientImpl">
+   	 <property name="clientDAO">
+   	 			<ref local="daoClient"></ref>
+   	 </property>
+    </bean>  
    
    <bean id="daoAdmin"	class="com.uvsq.colinebintou.projet.dao.AdministrateurDAO">
    	<property name="sessionFactory">
@@ -66,6 +73,17 @@ http://www.springframework.org/schema/context/spring-context-3.0.xsd" >
    		<ref bean="mySessionFactory"></ref>
    	</property>
    </bean>
-     	
+    
+    <bean id="daoCD" class="com.uvsq.colinebintou.projet.dao.CdDAO">
+   	<property name="sessionFactory">
+   		<ref bean="mySessionFactory"></ref>
+   	</property>
+   	</bean>
+   
+    <bean id="daoDVD" class="com.uvsq.colinebintou.projet.dao.DvdDAO">
+   	<property name="sessionFactory">
+   		<ref bean="mySessionFactory"></ref>
+   	</property>
+   	</bean>
 	
 </beans>
