@@ -16,8 +16,8 @@ public class PanierDAO extends HibernateDaoSupport implements DAO<Panier>{
 		}
 	}
 
-	public Panier find(Panier obj) {
-		Panier p = (Panier) getHibernateTemplate().get(Panier.class, obj.getId());
+	public Panier findbyId(int id) {
+		Panier p = (Panier) getHibernateTemplate().get(Panier.class, id);
 		return p;
 	}
 

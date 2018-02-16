@@ -16,8 +16,8 @@ public class AdministrateurDAO extends HibernateDaoSupport implements DAO<Admini
 		}
 	}
 
-	public Administrateur find(Administrateur obj) {
-		Administrateur d = (Administrateur) getHibernateTemplate().get(Administrateur.class, obj.getId());
+	public Administrateur findbyId(int id) {
+		Administrateur d = (Administrateur) getHibernateTemplate().get(Administrateur.class, id);
 		return d;
 	}
 

@@ -16,8 +16,8 @@ public class LivreDAO extends HibernateDaoSupport implements DAO<Livre>{
 		}
 	}
 
-	public Livre find(Livre obj) {
-		Livre l = (Livre) getHibernateTemplate().get(Livre.class, obj.getId());
+	public Livre findbyId(int id) {
+		Livre l = (Livre) getHibernateTemplate().get(Livre.class, id);
 		return l;
 	}
 
