@@ -1,5 +1,6 @@
 package com.uvsq.colinebintou.projet.dao;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -26,7 +27,6 @@ public class ClientDAOImpl extends HibernateDaoSupport implements ClientDAO {
 	}
 	
 	public Client findbyLoginPassword(String login, String password) {
-		//getHibernateTemplate().createCriteria(Client.class);
 		List<Client> clients = getHibernateTemplate().find("from Client where login=? and password=?", login, password);
 		if (clients.size() != 0) {
 			return clients.get(0);
@@ -48,13 +48,8 @@ public class ClientDAOImpl extends HibernateDaoSupport implements ClientDAO {
 		getHibernateTemplate().delete(obj);
 	}
 
-	public Set<Client> findAll() {
-		List<Client> clients = getHibernateTemplate().find("from Client");
-		Set<Client> clientsSet = new HashSet<Client>();
-		for (Client c : clients) {
-			clientsSet.add(c);
-		}
-		return clientsSet;
+	public ArrayList<Client> findAll() {
+		return (ArrayList) getHibernateTemplate().find("from Client");
 	}
 
 }

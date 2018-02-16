@@ -56,11 +56,17 @@ http://www.springframework.org/schema/context/spring-context-3.0.xsd" >
    	 </property>
     </bean>  
    
-   <bean id="daoAdmin"	class="com.uvsq.colinebintou.projet.dao.AdministrateurDAO">
+   <bean id="daoAdmin"	class="com.uvsq.colinebintou.projet.dao.AdministrateurDAOImpl">
    	<property name="sessionFactory">
    		<ref bean="mySessionFactory"></ref>
    	</property>
    </bean>
+   
+    <bean id="serviceLoginAdmin"  class="com.uvsq.colinebintou.projet.service.ServiceLoginAdminImpl">
+   	 <property name="dao">
+   	 			<ref local="daoAdmin"></ref>
+   	 </property>
+    </bean> 
    
    <bean id="daoPanier"	class="com.uvsq.colinebintou.projet.dao.PanierDAO">
    	<property name="sessionFactory">
@@ -68,22 +74,51 @@ http://www.springframework.org/schema/context/spring-context-3.0.xsd" >
    	</property>
    </bean>
    
-   <bean id="daoLivre"	class="com.uvsq.colinebintou.projet.dao.LivreDAO">
+   <bean id="daoLivre"	class="com.uvsq.colinebintou.projet.dao.LivreDAOImpl">
    	<property name="sessionFactory">
    		<ref bean="mySessionFactory"></ref>
    	</property>
    </bean>
     
-    <bean id="daoCD" class="com.uvsq.colinebintou.projet.dao.CdDAO">
+    <bean id="daoCD" class="com.uvsq.colinebintou.projet.dao.CdDAOImpl">
    	<property name="sessionFactory">
    		<ref bean="mySessionFactory"></ref>
    	</property>
    	</bean>
    
-    <bean id="daoDVD" class="com.uvsq.colinebintou.projet.dao.DvdDAO">
+    <bean id="daoDVD" class="com.uvsq.colinebintou.projet.dao.DvdDAOImpl">
    	<property name="sessionFactory">
    		<ref bean="mySessionFactory"></ref>
    	</property>
    	</bean>
+   	
+   	<bean id="daoArticle" class="com.uvsq.colinebintou.projet.dao.ArticleDAOImpl">
+   	<property name="sessionFactory">
+   		<ref bean="mySessionFactory"></ref>
+   	</property>
+   	</bean>
+   	
+   	 <bean id="serviceRecArt"  class="com.uvsq.colinebintou.projet.service.ServiceRechercheArticleImpl">
+   	 <property name="artDao">
+   	 			<ref local="daoArticle"></ref>
+   	 </property>
+    </bean> 
+    
+    <bean id="serviceRecLivre"  class="com.uvsq.colinebintou.projet.service.ServiceRechercheLivreImpl">
+   	 <property name="dao">
+   	 			<ref local="daoLivre"></ref>
+   	 </property>
+    </bean>
+    
+    <bean id="serviceRecCD"  class="com.uvsq.colinebintou.projet.service.ServiceRechercheCDImpl">
+   	 <property name="dao">
+   	 			<ref local="daoCD"></ref>
+   	 </property>
+    </bean>
 	
+	<bean id="serviceRecDVD"  class="com.uvsq.colinebintou.projet.service.ServiceRechercheDVDImpl">
+   	 <property name="dao">
+   	 			<ref local="daoDVD"></ref>
+   	 </property>
+    </bean>
 </beans>

@@ -5,11 +5,11 @@ import java.util.Set;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.uvsq.colinebintou.projet.dao.AdministrateurDAO;
-import com.uvsq.colinebintou.projet.dao.CdDAO;
+import com.uvsq.colinebintou.projet.dao.AdministrateurDAOImpl;
+import com.uvsq.colinebintou.projet.dao.CdDAOImpl;
 import com.uvsq.colinebintou.projet.dao.ClientDAOImpl;
-import com.uvsq.colinebintou.projet.dao.DvdDAO;
-import com.uvsq.colinebintou.projet.dao.LivreDAO;
+import com.uvsq.colinebintou.projet.dao.DvdDAOImpl;
+import com.uvsq.colinebintou.projet.dao.LivreDAOImpl;
 import com.uvsq.colinebintou.projet.dao.PanierDAO;
 import com.uvsq.colinebintou.projet.modele.*;
 
@@ -76,9 +76,9 @@ public class App {
 		
 		ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml"); //-> chargement du contexte
 		
-		LivreDAO livre = (LivreDAO) context.getBean("daoLivre");
-		CdDAO cddao = (CdDAO) context.getBean("daoCD");
-		DvdDAO dvddao = (DvdDAO) context.getBean("daoDVD");
+		LivreDAOImpl livre = (LivreDAOImpl) context.getBean("daoLivre");
+		CdDAOImpl cddao = (CdDAOImpl) context.getBean("daoCD");
+		DvdDAOImpl dvddao = (DvdDAOImpl) context.getBean("daoDVD");
 		PanierDAO panier = (PanierDAO) context.getBean("daoPanier");
 		
 		livre.create(l);
@@ -86,15 +86,24 @@ public class App {
 		dvddao.create(d);
 		panier.create(p);
 		
-		ServiceLoginClientImpl service = (ServiceLoginClientImpl) context.getBean("serviceLoginClient");
+		ServiceRechercheCDImpl serviceC = (ServiceRechercheCDImpl) context.getBean("serviceRecCD");
+		System.out.println(serviceC.findAllCD());
+		
+		ServiceRechercheDVDImpl serviceD = (ServiceRechercheDVDImpl) context.getBean("serviceRecDVD");
+		System.out.println(serviceD.findAllDVD());
+		
+		/*ServiceLoginClientImpl service = (ServiceLoginClientImpl) context.getBean("serviceLoginClient");
 		service.creerClient(c);
 		System.out.println(service.isValid("abc", "def").toString());		
 		Set<Client> clients = service.findAllClients();
 		for(Client cl : clients) {
 			System.out.println(cl.toString());
-		}
+		}*/
 		
-		/*AdministrateurDAO admin = (AdministrateurDAO) context.getBean("daoAdmin");
+		/*ServiceLoginAdminImpl service = (ServiceLoginAdminImpl) context.getBean("serviceLoginAdmin");
+		service.creerAdmin(a);
+		System.out.println(service.isValid(a.getLogin(), a.getPassword()));
+		AdministrateurDAO admin = (AdministrateurDAO) context.getBean("daoAdmin");
 		ClientDAOImpl client = (ClientDAOImpl) context.getBean("daoClient");
 		admin.create(a);
 		System.out.println(admin.findbyId(a));

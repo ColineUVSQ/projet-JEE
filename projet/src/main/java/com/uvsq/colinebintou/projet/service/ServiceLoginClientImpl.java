@@ -1,5 +1,6 @@
 package com.uvsq.colinebintou.projet.service;
 
+import java.util.ArrayList;
 import java.util.Set;
 
 import com.uvsq.colinebintou.projet.dao.ClientDAO;
@@ -30,7 +31,7 @@ public class ServiceLoginClientImpl implements ServiceLoginClient{
 		return clientDAO.update(cnew);
 	}
 
-	public Set<Client> findAllClients() {
+	public ArrayList<Client> findAllClients() {
 		return clientDAO.findAll();
 	}
 
