@@ -1,10 +1,14 @@
 package com.uvsq.colinebintou.projet.service;
 
+import java.util.Set;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.uvsq.colinebintou.projet.dao.AdministrateurDAO;
-import com.uvsq.colinebintou.projet.dao.ClientDAO;
+import com.uvsq.colinebintou.projet.dao.CdDAO;
+import com.uvsq.colinebintou.projet.dao.ClientDAOImpl;
+import com.uvsq.colinebintou.projet.dao.DvdDAO;
 import com.uvsq.colinebintou.projet.dao.LivreDAO;
 import com.uvsq.colinebintou.projet.dao.PanierDAO;
 import com.uvsq.colinebintou.projet.modele.*;
@@ -56,17 +60,12 @@ public class App {
 		p.setPaye(false);
 		p.ajouter(cd);
 		p.ajouter(d);
-		p.supprimer(cd);
-		p.supprimer(d);
+		//p.supprimer(cd);
+		//p.supprimer(d);
 		
 		//System.out.println(p.affiche());
 		
-		Commande com = new Commande();
-		com.ajouter(p);
-		//System.out.println(com.affiche());
-		
-		c.setCommandes(com);
-		//System.out.println(c.toString());
+		c.ajouter(p);
 		
 		Administrateur a = new Administrateur();
 		a.setId(5);
@@ -76,18 +75,38 @@ public class App {
 		System.out.println(a.toString());
 		
 		ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml"); //-> chargement du contexte
-		AdministrateurDAO admin = (AdministrateurDAO) context.getBean("daoAdmin");
+		
+		LivreDAO livre = (LivreDAO) context.getBean("daoLivre");
+		CdDAO cddao = (CdDAO) context.getBean("daoCD");
+		DvdDAO dvddao = (DvdDAO) context.getBean("daoDVD");
+		PanierDAO panier = (PanierDAO) context.getBean("daoPanier");
+		
+		livre.create(l);
+		cddao.create(cd);
+		dvddao.create(d);
+		panier.create(p);
+		
+		ServiceLoginClientImpl service = (ServiceLoginClientImpl) context.getBean("serviceLoginClient");
+		service.creerClient(c);
+		System.out.println(service.isValid("abc", "def").toString());		
+		Set<Client> clients = service.findAllClients();
+		for(Client cl : clients) {
+			System.out.println(cl.toString());
+		}
+		
+		/*AdministrateurDAO admin = (AdministrateurDAO) context.getBean("daoAdmin");
+		ClientDAOImpl client = (ClientDAOImpl) context.getBean("daoClient");
 		admin.create(a);
-		System.out.println(admin.find(a));
+		System.out.println(admin.findbyId(a));
 		
 		a.setNom("ramous");
 		admin.update(a);
 		//admin.delete(a);
 		
-		LivreDAO livre = (LivreDAO) context.getBean("daoLivre");
-		PanierDAO panier = (PanierDAO) context.getBean("daoPanier");
 		
-		livre.create(l);
-		panier.create(p);	
+		client.create(c);
+		System.out.println(client.findbyId(c));*/
+		
+		
 	}
 }
