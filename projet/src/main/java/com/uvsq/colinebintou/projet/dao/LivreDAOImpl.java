@@ -25,11 +25,8 @@ public class LivreDAOImpl extends HibernateDaoSupport implements LivreDAO{
 	}
 
 	public Livre update(Livre obj) {
-		Livre l = (Livre) getHibernateTemplate().get(Livre.class, obj.getId());
-		if (l != null){
-			getHibernateTemplate().update(obj);
-		}
-		return l;
+		getHibernateTemplate().update(obj);
+		return obj;
 	}
 
 	public void delete(Livre obj) {

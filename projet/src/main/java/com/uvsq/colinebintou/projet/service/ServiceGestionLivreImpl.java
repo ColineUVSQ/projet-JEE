@@ -1,11 +1,9 @@
 package com.uvsq.colinebintou.projet.service;
 
-import java.util.ArrayList;
-
 import com.uvsq.colinebintou.projet.dao.LivreDAO;
 import com.uvsq.colinebintou.projet.modele.Livre;
 
-public class ServiceRechercheLivreImpl implements ServiceRechercheLivre{
+public class ServiceGestionLivreImpl implements ServiceGestionLivre {
 	private LivreDAO dao;
 	
 	public LivreDAO getDao() {
@@ -16,7 +14,12 @@ public class ServiceRechercheLivreImpl implements ServiceRechercheLivre{
 		this.dao = dao;
 	}
 
-	public ArrayList<Livre> findAllLivre() {
-		return dao.findAll();
+	public Livre ajoutLivre(Livre l) {
+		return dao.create(l);
 	}
+
+	public void suppLivre(Livre l) {
+		dao.delete(l);
+	}
+
 }

@@ -1,9 +1,7 @@
 package com.uvsq.colinebintou.projet.dao;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
@@ -37,11 +35,8 @@ public class ClientDAOImpl extends HibernateDaoSupport implements ClientDAO {
 	}
 	
 	public Client update(Client obj) {
-		Client c = (Client) getHibernateTemplate().get(Client.class, obj.getId());
-		if (c != null){
-			getHibernateTemplate().update(obj);
-		}
-		return c;
+		getHibernateTemplate().update(obj);
+		return obj;
 	}
 
 	public void delete(Client obj) {

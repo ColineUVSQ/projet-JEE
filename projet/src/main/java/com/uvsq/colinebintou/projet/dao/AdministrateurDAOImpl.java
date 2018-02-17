@@ -1,14 +1,11 @@
 package com.uvsq.colinebintou.projet.dao;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.uvsq.colinebintou.projet.modele.Administrateur;
-import com.uvsq.colinebintou.projet.modele.Client;
 
 public class AdministrateurDAOImpl extends HibernateDaoSupport implements AdministrateurDAO{
 
@@ -28,11 +25,8 @@ public class AdministrateurDAOImpl extends HibernateDaoSupport implements Admini
 	}
 
 	public Administrateur update(Administrateur obj) {
-		Administrateur d = (Administrateur) getHibernateTemplate().get(Administrateur.class, obj.getId());
-		if (d != null){
-			getHibernateTemplate().update(obj);
-		}
-		return d;
+		getHibernateTemplate().update(obj);
+		return obj;
 	}
 
 	public void delete(Administrateur obj) {

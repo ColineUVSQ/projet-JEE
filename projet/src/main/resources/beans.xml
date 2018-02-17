@@ -121,4 +121,35 @@ http://www.springframework.org/schema/context/spring-context-3.0.xsd" >
    	 			<ref local="daoDVD"></ref>
    	 </property>
     </bean>
+    
+    <bean id="serviceGestionArt"  class="com.uvsq.colinebintou.projet.service.ServiceModifArticleImpl">
+   	 <property name="artDao">
+   	 			<ref local="daoArticle"></ref>
+   	 </property>
+    </bean>
+    
+    <bean id="serviceGestionLivre"  class="com.uvsq.colinebintou.projet.service.ServiceGestionLivreImpl">
+   	 <property name="dao">
+   	 			<ref local="daoLivre"></ref>
+   	 </property>
+    </bean>
+    
+     <bean id="serviceGestionCD"  class="com.uvsq.colinebintou.projet.service.ServiceGestionCDImpl">
+   	 <property name="dao">
+   	 			<ref local="daoCD"></ref>
+   	 </property>
+    </bean>
+    
+     <bean id="serviceGestionDVD"  class="com.uvsq.colinebintou.projet.service.ServiceGestionDVDImpl">
+   	 <property name="dao">
+   	 			<ref local="daoDVD"></ref>
+   	 </property>
+    </bean>
+    
+  	 <bean id="servicePanier"  class="com.uvsq.colinebintou.projet.service.ServicePanierImpl">
+   	 <property name="dao">
+   	 			<ref local="daoPanier"></ref>
+   	 </property>
+    </bean>
+		
 </beans>

@@ -1,7 +1,6 @@
 package com.uvsq.colinebintou.projet.service;
 
 import java.util.ArrayList;
-import java.util.Set;
 
 import com.uvsq.colinebintou.projet.dao.ClientDAO;
 import com.uvsq.colinebintou.projet.modele.Client;

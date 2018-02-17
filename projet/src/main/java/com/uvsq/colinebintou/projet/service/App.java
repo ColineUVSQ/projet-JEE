@@ -76,21 +76,37 @@ public class App {
 		
 		ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml"); //-> chargement du contexte
 		
-		LivreDAOImpl livre = (LivreDAOImpl) context.getBean("daoLivre");
-		CdDAOImpl cddao = (CdDAOImpl) context.getBean("daoCD");
-		DvdDAOImpl dvddao = (DvdDAOImpl) context.getBean("daoDVD");
-		PanierDAO panier = (PanierDAO) context.getBean("daoPanier");
+		//LivreDAOImpl livre = (LivreDAOImpl) context.getBean("daoLivre");
+		//CdDAOImpl cddao = (CdDAOImpl) context.getBean("daoCD");
+		//DvdDAOImpl dvddao = (DvdDAOImpl) context.getBean("daoDVD");
+		//PanierDAO panier = (PanierDAO) context.getBean("daoPanier");
 		
-		livre.create(l);
-		cddao.create(cd);
-		dvddao.create(d);
-		panier.create(p);
+		//livre.create(l);
+		//cddao.create(cd);
+		//dvddao.create(d);
+		//panier.create(p);
 		
-		ServiceRechercheCDImpl serviceC = (ServiceRechercheCDImpl) context.getBean("serviceRecCD");
-		System.out.println(serviceC.findAllCD());
+		ServiceGestionLivreImpl serviceL = (ServiceGestionLivreImpl) context.getBean("serviceGestionLivre");
+		Livre l2 = serviceL.ajoutLivre(l);
 		
-		ServiceRechercheDVDImpl serviceD = (ServiceRechercheDVDImpl) context.getBean("serviceRecDVD");
-		System.out.println(serviceD.findAllDVD());
+		ServiceGestionCDImpl serviceC = (ServiceGestionCDImpl) context.getBean("serviceGestionCD");
+		CD c2 = serviceC.ajoutCD(cd);
+		
+		ServiceGestionDVDImpl serviceD = (ServiceGestionDVDImpl) context.getBean("serviceGestionDVD");
+		DVD d2 = serviceD.ajoutDVD(d);
+		
+		ServiceRechercheArticleImpl servicerec = (ServiceRechercheArticleImpl) context.getBean("serviceRecArt");
+		CD cd2 = (CD) servicerec.findByName(cd.getNom());
+		
+		ServiceModifArticleImpl serviceA = (ServiceModifArticleImpl) context.getBean("serviceGestionArt");
+		System.out.println(serviceA.modifArticle(cd2, 12.0));
+		
+		ServicePanierImpl serviceP = (ServicePanierImpl) context.getBean("servicePanier");
+		serviceP.creerPanier(p);
+		serviceP.ajoutPanier(l2, p);
+		serviceP.ajoutPanier(c2, p);
+		serviceP.ajoutPanier(d2, p);
+		
 		
 		/*ServiceLoginClientImpl service = (ServiceLoginClientImpl) context.getBean("serviceLoginClient");
 		service.creerClient(c);

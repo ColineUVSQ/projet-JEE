@@ -25,11 +25,8 @@ public class CdDAOImpl extends HibernateDaoSupport implements CdDAO {
 	}
 
 	public CD update(CD obj) {
-		CD c = (CD) getHibernateTemplate().get(CD.class, obj.getId());
-		if (c != null){
-			getHibernateTemplate().update(obj);
-		}
-		return c;
+		getHibernateTemplate().update(obj);
+		return obj;
 	}
 
 	public void delete(CD obj) {

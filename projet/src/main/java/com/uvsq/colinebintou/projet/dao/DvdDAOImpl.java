@@ -25,11 +25,9 @@ public class DvdDAOImpl extends HibernateDaoSupport implements DvdDAO {
 	}
 
 	public DVD update(DVD obj) {
-		DVD d = (DVD) getHibernateTemplate().get(DVD.class, obj.getId());
-		if (d != null){
-			getHibernateTemplate().update(obj);
-		}
-		return d;
+		getHibernateTemplate().update(obj);
+		return obj;
+		
 	}
 
 	public void delete(DVD obj) {

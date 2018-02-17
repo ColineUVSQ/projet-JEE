@@ -25,11 +25,8 @@ public class ArticleDAOImpl extends HibernateDaoSupport implements ArticleDAO{
 	}
 
 	public Article update(Article obj) {
-		Article a = (Article) getHibernateTemplate().get(Article.class, obj.getId());
-		if (a != null){
-			getHibernateTemplate().update(a);
-		}
-		return a;
+		getHibernateTemplate().update(obj);
+		return obj;
 	}
 
 	public void delete(Article obj) {
