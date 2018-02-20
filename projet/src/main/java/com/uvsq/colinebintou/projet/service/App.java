@@ -60,6 +60,7 @@ public class App {
 		p.setPaye(false);
 		p.ajouter(cd);
 		p.ajouter(d);
+		p.setClient(c);
 		//p.supprimer(cd);
 		//p.supprimer(d);
 		
@@ -86,7 +87,7 @@ public class App {
 		//dvddao.create(d);
 		//panier.create(p);
 		
-		ServiceGestionLivreImpl serviceL = (ServiceGestionLivreImpl) context.getBean("serviceGestionLivre");
+		/*ServiceGestionLivreImpl serviceL = (ServiceGestionLivreImpl) context.getBean("serviceGestionLivre");
 		Livre l2 = serviceL.ajoutLivre(l);
 		
 		ServiceGestionCDImpl serviceC = (ServiceGestionCDImpl) context.getBean("serviceGestionCD");
@@ -101,12 +102,18 @@ public class App {
 		ServiceModifArticleImpl serviceA = (ServiceModifArticleImpl) context.getBean("serviceGestionArt");
 		System.out.println(serviceA.modifArticle(cd2, 12.0));
 		
+		ServiceLoginClientImpl serviceClient = (ServiceLoginClientImpl) context.getBean("serviceLoginClient");
+		Client c1 = serviceClient.creerClient(c);
+		//p.setClient(c1);
+		
 		ServicePanierImpl serviceP = (ServicePanierImpl) context.getBean("servicePanier");
-		serviceP.creerPanier(p);
+		//serviceP.creerPanier(p);
 		serviceP.ajoutPanier(l2, p);
 		serviceP.ajoutPanier(c2, p);
 		serviceP.ajoutPanier(d2, p);
-		
+		*/
+		ServiceLoginAdminImpl serviceAdmin = (ServiceLoginAdminImpl) context.getBean("serviceLoginAdmin");
+		serviceAdmin.creerAdmin(a);
 		
 		/*ServiceLoginClientImpl service = (ServiceLoginClientImpl) context.getBean("serviceLoginClient");
 		service.creerClient(c);

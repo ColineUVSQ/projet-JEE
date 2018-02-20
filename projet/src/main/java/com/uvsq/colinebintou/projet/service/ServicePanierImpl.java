@@ -2,6 +2,7 @@ package com.uvsq.colinebintou.projet.service;
 
 import com.uvsq.colinebintou.projet.dao.PanierDAO;
 import com.uvsq.colinebintou.projet.modele.Article;
+import com.uvsq.colinebintou.projet.modele.Client;
 import com.uvsq.colinebintou.projet.modele.Panier;
 
 public class ServicePanierImpl implements ServicePanier{

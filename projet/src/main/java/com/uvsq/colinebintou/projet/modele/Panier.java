@@ -7,6 +7,7 @@ public class Panier implements IPanier {
 	private int id;
 	private Set<IArticle>  articles;
 	private boolean paye;
+	private Client client;
 	
 	public Panier() {
 		articles = new HashSet<IArticle>();
@@ -19,6 +20,14 @@ public class Panier implements IPanier {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public Client getClient() {
+		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
 	}
 
 	public Set<IArticle> getArticles() {

@@ -10,6 +10,9 @@
        <discriminator column="TYPE" type="java.lang.String"/>
        <subclass name="com.uvsq.colinebintou.projet.modele.Panier" discriminator-value="PANIER"> 
        		<property name="paye" type="java.lang.Boolean"> <column name="PAYE"/> </property>
+	   		<many-to-one name="client" class="com.uvsq.colinebintou.projet.modele.Client"> 
+				<column name="ID_CLIENT" not-null="true"/>
+			</many-to-one>	   		
 	   		<set name="articles" table="panierarticles" cascade="all" lazy="false">
 	   		<key> 
 				<column name="ID_PANIER" not-null="true"/>
