@@ -8,14 +8,14 @@
 <column name="ID"/> <generator class="increment"/> 
        </id> 
        <discriminator column="TYPE_ARTICLE" type="java.lang.String"/>
-       <subclass name="com.uvsq.colinebintou.projet.modele.Article">
+       <subclass name="com.uvsq.colinebintou.ecommerce.modele.Article">
        		<property name="nom" type="java.lang.String"> <column name="NOM"/> </property>
        		<property name="prix" type="double"> <column name="PRIX"/> </property> 
 	   		<property name="quantite" type="int"> <column name="QUANTITE"/> </property> 
 	   		<subclass name="com.uvsq.colinebintou.projet.modele.Livre" discriminator-value="LIVRE">
 	   				  <property name="auteur" type="java.lang.String"> <column name="AUTEUR"/> </property> 
 	   		</subclass>
-	   		<subclass name="com.uvsq.colinebintou.projet.modele.CD" discriminator-value="CD">
+	   		<subclass name="com.uvsq.colinebintou.ecommerce.modele.CD" discriminator-value="CD">
 	   				<property name="artiste" type="java.lang.String"> <column name="ARTISTE"/> </property>
 	   		</subclass>
 	   		<subclass name="com.uvsq.colinebintou.projet.modele.DVD" discriminator-value="DVD">
